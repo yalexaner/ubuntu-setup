@@ -25,6 +25,17 @@ def install_and_configure_yandex_disk():
     os.system('yandex-disk setup')
 
 
+def install_and_configure_git():
+    os.system('sudo apt install git')
+
+    username = input('username (leave empty for default value): ') or 'yalexaner'
+    email = input('email (leave empty for default value): ') or 'mail.yalexaner@gmail.com'
+
+    os.system(f'git config --global user.name {username}')
+    os.system(f'git config --global user.email {email}')
+    os.system('git config --global user.editor vim')
+
+
 def install_applications():
     # Vivaldi
     os.system('wget "https://downloads.vivaldi.com/stable/vivaldi-stable_3.3.2022.45-1_amd64.deb" -O /tmp/vivaldi.deb '
@@ -41,9 +52,10 @@ def install_applications():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Setup the system.')
 
-    parser.add_argument('object', default='basic', nargs='?', choices=['basic', 'bash', 'yandex-disk', 'apps'],
+    parser.add_argument('object', default='everything', nargs='?',
+                        choices=['everything', 'bash', 'yandex-disk', 'git', 'apps'],
                         metavar='{basic, bash, yandex-disk, apps}',
-                        help='Object on which to perform the setup. Basic includes bash, yandex-disk, and apps.')
+                        help='Object on which to perform the setup.')
 
     arg = parser.parse_args().object
 
@@ -51,9 +63,12 @@ if __name__ == '__main__':
         setup_bash()
     elif arg == 'yandex-disk':
         install_and_configure_yandex_disk()
+    elif arg == 'git':
+        install_and_configure_git()
     elif arg == 'apps':
         install_applications()
     else:
         setup_bash()
         install_and_configure_yandex_disk()
+        install_and_configure_git()
         install_applications()
