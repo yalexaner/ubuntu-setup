@@ -5,6 +5,7 @@ alias upd='aptu && aptar && aptac'
 alias aptu='sudo apt update && sudo apt upgrade'
 alias apti='sudo apt install'
 alias aptr='sudo apt remove'
+alias apts='apt search'
 alias aptar='sudo apt autoremove'
 alias aptac='sudo apt autoclean'
 
