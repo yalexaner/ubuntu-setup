@@ -66,22 +66,16 @@ if __name__ == '__main__':
     parser = ArgumentParser(description='Setup the system.')
 
     parser.add_argument('object', default='everything', nargs='?',
-                        choices=['everything', 'bash', 'dirs', 'yandex-disk', 'git', 'apps'],
-                        metavar='{basic, bash, dirs, yandex-disk, apps}',
+                        choices=['everything', 'bash', 'git'],
+                        metavar='{everything, bash, git}',
                         help='Object on which to perform the setup.')
 
     arg = parser.parse_args().object
 
     if arg == 'bash':
         setup_bash()
-    elif arg == 'dirs':
-        configure_dirs()
-    elif arg == 'yandex-disk':
-        install_and_configure_yandex_disk()
     elif arg == 'git':
         install_and_configure_git()
-    elif arg == 'apps':
-        install_applications()
     else:
         setup_bash()
         configure_dirs()
