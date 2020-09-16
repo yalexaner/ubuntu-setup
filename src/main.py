@@ -8,9 +8,15 @@ def setup_bash():
     copy_file('../res/.bash_aliases', '/home/yalexaner/')
 
     # changing promt
-    with open('/home/yalexaner/.bashrc', 'a') as bashrc:
-        with open('../res/promt') as promt:
-            bashrc.write(promt.read())
+    with open('../res/promt') as promt_file:
+        promt = promt_file.read()
+
+    with open('/home/yalexaner/.bashrc', 'r') as bashrc_file:
+        bashrc = bashrc_file.read()
+
+    if promt not in bashrc:
+        with open('/home/yalexaner/.bashrc', 'a') as bashrc:
+            bashrc.write(promt)
 
 
 def configure_dirs():
@@ -53,7 +59,7 @@ def install_applications():
     # Stremio
     execute('wget "https://dl.strem.io/shell-linux/v4.4.116/stremio_4.4.116-1_amd64.deb" -O /tmp/stremio.deb '
             '&& sudo dpkg -i /tmp/stremio.deb')
-    
+
     # VK Messenger
     execute('wget "https://desktop.userapi.com/get_last?platform=linux64&branch=master&packet=deb" -O /tmp/vk.deb '
             '&& sudo dpkg -i /tmp/vk.deb')
