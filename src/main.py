@@ -39,9 +39,21 @@ def install_applications():
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.parse_args()
+    parser = argparse.ArgumentParser(description='Setup the system.')
 
-    setup_bash()
-    install_and_configure_yandex_disk()
-    install_applications()
+    parser.add_argument('object', default='basic', nargs='?', choices=['basic', 'bash', 'yandex-disk', 'apps'],
+                        metavar='{basic, bash, yandex-disk, apps}',
+                        help='Object on which to perform the setup. Basic includes bash, yandex-disk, and apps.')
+
+    arg = parser.parse_args().object
+
+    if arg == 'bash':
+        setup_bash()
+    elif arg == 'yandex-disk':
+        install_and_configure_yandex_disk()
+    elif arg == 'apps':
+        install_applications()
+    else:
+        setup_bash()
+        install_and_configure_yandex_disk()
+        install_applications()
