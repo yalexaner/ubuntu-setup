@@ -53,6 +53,10 @@ def install_applications():
     # Stremio
     execute('wget "https://dl.strem.io/shell-linux/v4.4.116/stremio_4.4.116-1_amd64.deb" -O /tmp/stremio.deb '
             '&& sudo dpkg -i /tmp/stremio.deb')
+    
+    # VK Messenger
+    execute('wget "https://desktop.userapi.com/get_last?platform=linux64&branch=master&packet=deb" -O /tmp/vk.deb '
+            '&& sudo dpkg -i /tmp/vk.deb')
 
     # apts: Spotify, Telegram, Zeal, mpv, GParted, Vim, Vim GTK (for external clipboard)
     execute('sudo apt install spotify-client telegram-desktop zeal mpv gparted vim vim-gtk')
