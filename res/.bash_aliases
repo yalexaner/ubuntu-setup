@@ -19,7 +19,7 @@ alias rmf='rm -rf'
 # check for files' sizes
 alias v='du -sh'
 alias vb='du -bs' # size in bytes
-alias vkb='du -s' # size in Kbytes
+alias vkb='du -s' # size in Kilobytes
 
 # yandex-disk sync
 alias yad='yandex-disk'
@@ -31,6 +31,7 @@ alias gits='git status'
 alias gita='git add'
 alias gitc='git commit -m'
 alias gitl='git log'
+alias gitd='git diff'
 
 # clipboard
 alias cl='xclip'
