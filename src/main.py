@@ -18,8 +18,8 @@ def install_and_configure_yandex_disk():
     os.system('echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" '
               '| sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null '
               '&& wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- '
-              '| sudo apt-key add - && sudo apt-get update '
-              '&& sudo apt-get install -y yandex-disk')
+              '| sudo apt-key add - && sudo apt update '
+              '&& sudo apt install -y yandex-disk')
 
     # setting up yandex-disk
     os.system('yandex-disk setup')
@@ -28,14 +28,14 @@ def install_and_configure_yandex_disk():
 def install_applications():
     # Vivaldi
     os.system('wget "https://downloads.vivaldi.com/stable/vivaldi-stable_3.3.2022.45-1_amd64.deb" -O /tmp/vivaldi.deb '
-              '&& debi /tmp/vivaldi.deb')
+              '&& sudo dpkg -i /tmp/vivaldi.deb')
 
     # Stremio
     os.system('wget "https://dl.strem.io/shell-linux/v4.4.116/stremio_4.4.116-1_amd64.deb" -O /tmp/stremio.deb '
-              '&& debi /tmp/stremio.deb')
+              '&& sudo dpkg -i /tmp/stremio.deb')
 
     # apts: Spotify, Telegram, Zeal, mpv, GParted, Vim, Vim GTK (for external clipboard)
-    os.system('apti spotify-client telegram-desktop zeal mpv gparted vim vim-gtk')
+    os.system('sudo apt install spotify-client telegram-desktop zeal mpv gparted vim vim-gtk')
 
 
 if __name__ == '__main__':
