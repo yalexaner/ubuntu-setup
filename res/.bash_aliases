@@ -19,7 +19,7 @@ alias rmf='rm -rf'
 # check for files' sizes
 alias v='du -sh'
 alias vb='du -bs' # size in bytes
-alias vkb='du -s' # size in Kilobytes
+alias vk='du -s' # size in Kilobytes
 
 # yandex-disk sync
 alias yad='yandex-disk'
