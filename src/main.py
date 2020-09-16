@@ -25,9 +25,23 @@ def install_and_configure_yandex_disk():
     os.system('yandex-disk setup')
 
 
+def install_applications():
+    # Vivaldi
+    os.system('wget "https://downloads.vivaldi.com/stable/vivaldi-stable_3.3.2022.45-1_amd64.deb" -O /tmp/vivaldi.deb '
+              '&& debi /tmp/vivaldi.deb')
+
+    # Stremio
+    os.system('wget "https://dl.strem.io/shell-linux/v4.4.116/stremio_4.4.116-1_amd64.deb" -O /tmp/stremio.deb '
+              '&& debi /tmp/stremio.deb')
+
+    # apts: Spotify, Telegram, Zeal, mpv, GParted, Vim, Vim GTK (for external clipboard)
+    os.system('apti spotify-client telegram-desktop zeal mpv gparted vim vim-gtk')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.parse_args()
 
     setup_bash()
     install_and_configure_yandex_disk()
+    install_applications()
